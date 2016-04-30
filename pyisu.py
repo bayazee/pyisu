@@ -3,7 +3,7 @@
 # Copyright: (c) 2016 by Mehdi Bayazee <bayazee@gmail.com>
 # Multi-purpose iransystem codec convertor
 # License: BSD, see LICENSE for more details.
-# Created: 02/02/2009
+
 
 import sys
 
@@ -93,8 +93,6 @@ u2irs = {
 }
 
 set_im_iso = (
-    # این گروه اگر قبل از یک حرفی بیان نمی چسبن !
-
     0x0622, # ARABIC LETTER ALEF WITH MADDA ABOVE : آ
     0x0621, # ARABIC LETTER HAMZA : ء
     0x0627, # ARABIC LETTER ALEF : ا
@@ -108,7 +106,7 @@ set_im_iso = (
     0x0648, # ARABIC LETTER WAW : و
 )
 
-# کد های ایران سیستمی که باید یک فاصله به آنها اضافه شود.
+# We should add an extra space to these letters
 hasSpace = (146, 148, 150, 152, 154, 156, 158, 160, 167, 169, 171, 173, 225,
             226, 229, 230, 233, 235, 237, 239, 241, 244, 246, 249, 252, 253)
 
@@ -119,13 +117,11 @@ INITIAL = 1
 MEDIAL = 2
 FINALL = 3
 
-#----------------------------------------------------------------------
 def irs_spc_char(ordCh):
     """return true if ch is spc"""
 
     return spcs.get(ordCh, 0)
 
-#----------------------------------------------------------------------
 def irs_to_utf8(iBuf):
     """convert iransystem codec to unicode"""
 
@@ -152,7 +148,6 @@ def irs_to_utf8(iBuf):
 
     return uBuf.strip()
 
-#----------------------------------------------------------------------
 def utf8_to_irs(uBuf):
     """Convert unicode string to iransystem"""
 
@@ -169,7 +164,6 @@ def utf8_to_irs(uBuf):
 
     return iBuf
 
-#----------------------------------------------------------------------
 def _unicode_to_iransystem(uCh, beforCh=None, afterCh=None):
     """convert unicode char to iransystem"""
 
